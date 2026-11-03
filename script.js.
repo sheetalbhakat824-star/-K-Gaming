@@ -1,1 +1,176 @@
 
+// K-GAMING WEBSITE - JAVASCRIPT
+
+let balance = 10000;
+
+const balanceEl = document.getElementById("balance");
+const modal = document.getElementById("modal");
+const modalTitle = document.getElementById("modalTitle");
+const modalText = document.getElementById("modalText");
+const modalIcon = document.getElementById("modalIcon");
+const toastEl = document.getElementById("toast");
+
+let toastTimer;
+
+// Update wallet balance
+function updateBalance() {
+  balanceEl.textContent = balance.toLocaleString("en-IN");
+}
+
+// Show notification
+function showToast(message) {
+  toastEl.textContent = message;
+  toastEl.classList.add("show");
+
+  clearTimeout(toastTimer);
+
+  toastTimer = setTimeout(() => {
+    toastEl.classList.remove("show");
+  }, 2200);
+}
+
+// Open popup
+function openModal(title, message, icon = "🎮") {
+  modalTitle.textContent = title;
+  modalText.textContent = message;
+  modalIcon.textContent = icon;
+  modal.classList.remove("hidden");
+}
+
+// Close popup
+function closeModal() {
+  modal.classList.add("hidden");
+}
+
+// Game card buttons
+document.querySelectorAll(".game-card").forEach(card => {
+  card.addEventListener("click", () => {
+    const game = card.dataset.game;
+
+    openModal(
+      game,
+      `Welcome to ${game} demo! Play using virtual coins only. No real-money betting or cash prizes.`,
+      "🎲"
+    );
+  });
+});
+
+// Add coins button
+document.getElementById("addCoins").addEventListener("click", () => {
+  showToast("Demo mode: claim your free bonus coins!");
+});
+
+// Welcome bonus
+document.getElementById("bonusBtn").addEventListener("click", () => {
+  balance += 500;
+  updateBalance();
+  showToast("500 demo coins added!");
+});
+
+// Daily gift
+document.getElementById("giftBtn").addEventListener("click", () => {
+  balance += 100;
+  updateBalance();
+  showToast("100 demo coins received!");
+});
+
+// Notifications
+document.getElementById("noticeBtn").addEventListener("click", () => {
+  openModal(
+    "Notifications",
+    "You are all caught up. Enjoy K-Gaming!",
+    "🔔"
+  );
+});
+
+// Leaderboard
+document.getElementById("leaderBtn").addEventListener("click", () => {
+  openModal(
+    "Leaderboard",
+    "1. PLAYER_K - 9850 points\n2. GAMER_07 - 8920 points\n3. YOU - Keep playing!",
+    "🏆"
+  );
+});
+
+// View results
+document.getElementById("resultsBtn").addEventListener("click", () => {
+  openModal(
+    "Demo Results",
+    "This is a sample leaderboard. Scores have no cash value.",
+    "📋"
+  );
+});
+
+// Play button
+document.getElementById("playBtn").addEventListener("click", () => {
+  document.querySelector(".games-grid").scrollIntoView({
+    behavior: "smooth"
+  });
+
+  showToast("Choose your favourite demo game!");
+});
+
+// Close popup button
+document.getElementById("closeModal").addEventListener("click", closeModal);
+
+// Close popup by tapping outside
+modal.addEventListener("click", event => {
+  if (event.target === modal) {
+    closeModal();
+  }
+});
+
+// Modal action
+document.getElementById("modalAction").addEventListener("click", () => {
+  closeModal();
+  showToast("Demo game selected!");
+});
+
+// Bottom navigation
+document.querySelectorAll(".bottom-nav button[data-tab]")
+.forEach(button => {
+
+  button.addEventListener("click", () => {
+
+    document.querySelectorAll(".bottom-nav button[data-tab]")
+    .forEach(btn => btn.classList.remove("active"));
+
+    button.classList.add("active");
+
+    const tab = button.dataset.tab;
+
+    if (tab === "Explore") {
+      document.querySelector(".games-grid").scrollIntoView({
+        behavior: "smooth"
+      });
+    }
+
+    else if (tab === "Rewards") {
+      openModal(
+        "Rewards",
+        "Collect free demo coins with welcome bonuses and daily gifts.",
+        "🎟"
+      );
+    }
+
+    else if (tab === "Profile") {
+      openModal(
+        "Player Profile",
+        "Guest Player | Demo Account | Virtual Coins Only",
+        "👤"
+      );
+    }
+
+    else {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }
+  });
+});
+
+// Initialize wallet
+updateBalance();
+
+console.log("K-Gaming JavaScript loaded successfully!");
