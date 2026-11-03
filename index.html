@@ -1,1 +1,51 @@
+<div class="app-shell">
+  <header class="topbar">
+    <div class="brand-mark">K</div>
+    <div class="wallet"><span class="coin">◎</span><span><small>DEMO BALANCE</small><strong id="balance">10,000</strong></span><button id="addCoins" aria-label="Add demo coins">+</button></div>
+    <button class="top-icon" id="noticeBtn" aria-label="Notifications">♢</button>
+    <button class="top-icon" id="giftBtn" aria-label="Daily gift">🎁</button>
+    <div class="avatar">K</div>
+  </header>
 
+  <section class="promo-row">
+    <article class="promo-card">
+      <div><span class="eyebrow">WELCOME BONUS</span><h2>PLAY MORE.<br><em>HAVE FUN.</em></h2><p>Get <b>500</b> free demo coins</p><button class="lime-btn" id="bonusBtn">CLAIM BONUS</button></div>
+      <div class="treasure" aria-hidden="true">🪙<br>💰</div>
+    </article>
+    <article class="activity-card"><span class="live-dot"></span><h3>ACTIVITY<br>CENTER</h3><div class="activity-art">🏆 🎲 🎯</div><small>See what's new</small></article>
+  </section>
+
+  <div class="section-kicker"><span class="ended">DEMO</span><strong>Community leaderboard</strong><button id="leaderBtn">More ›</button></div>
+  <section class="prize-banner">
+    <div class="banner-top">K-GAMING <span>•</span> FUN ZONE</div>
+    <h1>10,000 <small>COINS</small></h1>
+    <div class="champion">🏆 <span>Top player today</span><b>PLAYER_K</b></div>
+    <button class="results-btn" id="resultsBtn">VIEW LEADERBOARD　☷</button>
+    <p class="ticker">★ Demo coins only · No cash value · Play responsibly</p>
+  </section>
+  <div class="dots"><i></i><b></b><i></i></div>
+
+  <div class="heading-row"><h2>Trending Games</h2><span>VIEW ALL ›</span></div>
+  <section class="games-grid">
+    <button class="game-card aviator" data-game="Aviator"><span class="game-symbol">✈</span><strong>AVIATOR</strong><small>ARCADE</small></button>
+    <button class="game-card dice tall" data-game="Lucky Dice"><span class="dice-art">⚄ ⚅</span><strong>LUCKY DICE</strong><small>CASUAL</small></button>
+    <button class="game-card parrot" data-game="Parrot Party"><span class="game-symbol">🦜</span><strong>PARROT PARTY</strong><small>PUZZLE</small></button>
+    <button class="game-card seven" data-game="Seven Down"><span class="game-symbol">🎲</span><strong>SEVEN DOWN</strong><small>ARCADE</small></button>
+    <button class="game-card wheel" data-game="Spin Wheel"><span class="game-symbol">🎡</span><strong>SPIN WHEEL</strong><small>CASUAL</small></button>
+    <button class="game-card crazy" data-game="Crazy Quiz"><span class="game-symbol">🎯</span><strong>CRAZY QUIZ</strong><small>QUIZ</small></button>
+  </section>
+
+  <nav class="bottom-nav">
+    <button class="active" data-tab="Menu"><span>✿</span>Menu</button>
+    <button data-tab="Explore"><span>⌕</span>Explore</button>
+    <button class="play-tab" id="playBtn"><span>▶</span>PLAY</button>
+    <button data-tab="Rewards"><span>🎟</span>Rewards</button>
+    <button data-tab="Profile"><span>♙</span>Profile</button>
+  </nav>
+</div>
+
+<div class="modal hidden" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-card"><button class="close" id="closeModal">×</button><div class="modal-icon" id="modalIcon">🎮</div><h2 id="modalTitle">Game preview</h2><p id="modalText">This is a virtual-coin demo. No deposits, withdrawals, or cash prizes.</p><div class="modal-actions"><button class="lime-btn" id="modalAction">Try demo</button></div></div>
+</div>
+<div class="toast" id="toast" aria-live="polite"></div>
+  
